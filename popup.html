@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h3>Chat Exporter</h3>
+    
+    <div class="site-info">
+      <div id="siteName">Сайт: не определен</div>
+    </div>
+    
+    <button id="scanBtn" class="btn primary">Сканировать и экспортировать</button>
+    
+    <div id="options" class="options">
+      <div class="options-group">
+        <h4>Данные для экспорта</h4>
+        <div class="option-row">
+          <input type="checkbox" id="includeThoughtTime" checked>
+          <label for="includeThoughtTime">Время размышлений (thoughtTime)</label>
+        </div>
+        <div class="option-row">
+          <input type="checkbox" id="includeThoughtText" checked>
+          <label for="includeThoughtText">Текст размышлений (thoughtText)</label>
+        </div>
+      </div>
+      
+      <div class="options-group">
+        <h4>Форматы файлов</h4>
+        <div class="option-row">
+          <input type="checkbox" id="exportJSON" checked>
+          <label for="exportJSON">JSON</label>
+        </div>
+        <div class="option-row">
+          <input type="checkbox" id="exportMarkdown">
+          <label for="exportMarkdown">Markdown</label>
+        </div>
+      </div>
+    </div>
+    
+    <div id="status" class="status"></div>
+    
+    <div class="instructions" id="instructions">
+      <h4>Как использовать:</h4>
+      <ul>
+        <li>Прикрепите экспортированный файл к новому боту</li>
+        <li>Используйте универсальный промпт (ниже)</li>
+      </ul>
+      <div class="prompt-header">
+        <h4>Универсальный промпт</h4>
+        <button id="copyPromptBtn" class="btn secondary small">Копировать</button>
+      </div>
+      <pre id="universalPrompt">Я загружаю файл JSON с нашим предыдущим диалогом. Пожалуйста, внимательно изучи его и считай как нашу предыдущую беседу. Затем продолжи разговор с того места, где мы остановились.
+
+Структура файла следующая:
+- Массив объектов сообщений
+- Каждый объект имеет поле "role" (может быть "user" или "assistant") и поле "text" с содержимым сообщения
+- У сообщений ассистента также могут присутствовать дополнительные поля:
+  - "thoughtTime" - время, потраченное на размышления (например, "Thought for 25 seconds")
+  - "thoughtText" - текст внутренних размышлений ассистента
+
+Пожалуйста:
+1. Проанализируй загруженный файл и пойми контекст нашего разговора
+2. Учти всю предыдущую историю переписки, включая мои цели и задачи
+3. Продолжай отвечать так, как если бы мы продолжали наш разговор без перерыва
+4. Если у тебя есть вопросы по предыдущим частям диалога или тебе нужно что-то уточнить по уже обсужденным темам — обращайся ко мне за уточнениями
+
+Теперь, когда ты ознакомился с контекстом, пожалуйста, продолжай нашу беседу.</pre>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
