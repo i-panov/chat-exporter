@@ -8,6 +8,9 @@
     "scripting",
     "downloads"
   ],
+  "host_permissions": [
+    "https://deepseek.com/*"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
